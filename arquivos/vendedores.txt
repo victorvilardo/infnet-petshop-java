@@ -1,0 +1,3 @@
+joao;12345678912345;matricula1
+tiago;98765432154;matricula2
+ana;65498731221;matricula3

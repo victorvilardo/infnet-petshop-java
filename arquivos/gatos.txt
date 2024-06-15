@@ -1,0 +1,3 @@
+gato01;grande;siames
+gato02;pequeno;siames
+gato03;grande;persa
