@@ -21,4 +21,13 @@ public class CachorroService {
     public Collection<Cachorro> obterLista(){
         return mapa.values();
     }
+
+
+    public Cachorro obterPorId(Integer id) {
+        return mapa.get(id);
+    }
+
+    public void excluir(Integer id) {
+        mapa.remove(id);
+    }
 }

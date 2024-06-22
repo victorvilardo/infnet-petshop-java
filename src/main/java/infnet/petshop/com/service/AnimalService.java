@@ -21,4 +21,12 @@ public class AnimalService {
         return mapa.values();
     }
 
+
+    public Animal obterPorId(Integer id) {
+        return mapa.get(id);
+    }
+
+    public void excluir(Integer id) {
+        mapa.remove(id);
+    }
 }

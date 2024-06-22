@@ -21,4 +21,13 @@ public class GatoService {
     public Collection<Gato> obterLista(){
         return mapa.values();
     }
+
+
+    public Gato obterPorId(Integer id) {
+        return mapa.get(id);
+    }
+
+    public void excluir(Integer id) {
+        mapa.remove(id);
+    }
 }

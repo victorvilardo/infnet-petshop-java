@@ -5,10 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 public class Vendedor {
 
     private Integer id;
@@ -19,14 +21,20 @@ public class Vendedor {
 
     private String matricula;
 
+    private List<Animal> vendas;
 
+    public Vendedor() {
+        this.vendas = new ArrayList<Animal>();
+    }
     @Override
     public String toString() {
-        return String.format("%d - %s - %s - %s",
+        return String.format("%d - %s - %s - %s - %d",
                 id,
                 nome,
                 cpf,
-                matricula
+                matricula,
+                vendas.size()
+
         );
     }
 
