@@ -5,12 +5,7 @@ import java.util.Collection;
 import infnet.petshop.com.model.Gato;
 import infnet.petshop.com.service.GatoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -20,8 +15,8 @@ public class GatoController {
     private GatoService gatoService;
 
     @GetMapping(value = "/gato/lista")
-    public Collection<Gato> obterLista(){
-        return gatoService.obterLista();
+    public Collection<Gato> obterLista(@RequestParam String orderBy){
+        return gatoService.obterLista(orderBy);
     }
 
     @GetMapping(value =  "/gato/{id}")

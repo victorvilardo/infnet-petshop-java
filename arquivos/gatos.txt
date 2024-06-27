@@ -1,3 +1,2 @@
-gato01;grande;siames
-gato02;pequeno;siames
-gato03;grande;persa
+theo;cinza;listrado;felino;5;1
+lua;preto;malhado;felino;6;2

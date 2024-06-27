@@ -1,0 +1,5 @@
+c;fred;5;canino;pitbul;true;grande;1
+G;theo;4;felino;cinza;listrado;2
+c;kadu;6;canino;shitzu;true;pequeno;3
+c;cacau;7;canino;maltez;false;medio;3
+G;lua;8;felino;preto;malhado;2

@@ -7,6 +7,8 @@ import java.util.Arrays;
 import infnet.petshop.com.model.Cachorro;
 import infnet.petshop.com.model.Gato;
 import infnet.petshop.com.model.Vendedor;
+import infnet.petshop.com.service.CachorroService;
+import infnet.petshop.com.service.GatoService;
 import infnet.petshop.com.service.VendedorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -20,6 +22,10 @@ public class VendedorLoader implements ApplicationRunner {
     @Autowired
     private VendedorService vendedorService;
 
+    @Autowired
+    private CachorroService cachorroService;
+    @Autowired
+    private GatoService gatoService;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -51,9 +57,15 @@ public class VendedorLoader implements ApplicationRunner {
 
                 case "G":
                     Gato gato = new Gato();
-                    gato.setNome(campos[0]);
-                    gato.setCor(campos[1]);
-                    gato.setTipoPelagem(campos[2]);
+                    gato.setNome(campos[1]);
+                    gato.setCor(campos[2]);
+                    gato.setTipoPelagem(campos[3]);
+                    gato.setTipo(campos[4]);
+                    gato.setIdade(Long.valueOf(campos[5]));
+
+                    gato.setVendedor(vendedor);
+
+                    gatoService.incluir(gato);
 
                     vendedor.getVendas().add(gato);
 
@@ -61,9 +73,15 @@ public class VendedorLoader implements ApplicationRunner {
 
                 case "C":
                     Cachorro cachorro = new Cachorro();
-                    cachorro.setNome(campos[0]);
-                    cachorro.setRaca(campos[1]);
-                    cachorro.setAdestrado(Boolean.parseBoolean(campos[2]));
+                    cachorro.setNome(campos[1]);
+                    cachorro.setRaca(campos[2]);
+                    cachorro.setAdestrado(Boolean.parseBoolean(campos[3]));
+                    cachorro.setIdade(Long.valueOf(campos[4]));
+                    cachorro.setPorte(campos[5]);
+
+                    cachorro.setVendedor(vendedor);
+
+                    cachorroService.incluir(cachorro);
 
                     vendedor.getVendas().add(cachorro);
 

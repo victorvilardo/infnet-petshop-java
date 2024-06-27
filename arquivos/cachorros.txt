@@ -1,0 +1,3 @@
+fred;pitbul;true;10;canino;grande;1
+kadu;shitzu;true;12;canino;pequeno;2
+cacau;maltez;false;11;canino;pequeno;3

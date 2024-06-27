@@ -5,12 +5,15 @@ import infnet.petshop.com.model.Cachorro;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
+import infnet.petshop.com.model.Vendedor;
 import infnet.petshop.com.service.CachorroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+@Order(3)
 @Component
 public class CachorroLoader implements ApplicationRunner{
 
@@ -36,6 +39,10 @@ public class CachorroLoader implements ApplicationRunner{
             cachorro.setNome(campos[0]);
             cachorro.setRaca(campos[1]);
             cachorro.setAdestrado(Boolean.parseBoolean(campos[2]));
+            cachorro.setIdade(Long.valueOf(campos[3]));
+            cachorro.setTipo(campos[4]);
+            cachorro.setPorte(campos[5]);
+            cachorro.setVendedor(new Vendedor(Integer.valueOf(campos[6])));
 
             cachorroService.incluir(cachorro);
 

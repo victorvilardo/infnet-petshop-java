@@ -1,6 +1,7 @@
 package infnet.petshop.com.loaders;
 
 import infnet.petshop.com.model.Gato;
+import infnet.petshop.com.model.Vendedor;
 import infnet.petshop.com.service.GatoService;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -8,8 +9,10 @@ import java.io.FileReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+@Order(2)
 @Component
 public class GatoLoader  implements ApplicationRunner {
 
@@ -35,6 +38,10 @@ public class GatoLoader  implements ApplicationRunner {
             gato.setNome(campos[0]);
             gato.setCor(campos[1]);
             gato.setTipoPelagem(campos[2]);
+            gato.setTipo(campos[3]);
+            gato.setIdade(Long.valueOf(campos[4]));
+            gato.setVendedor(new Vendedor(Integer.valueOf(campos[5])));
+
 
             gatoService.incluir(gato);
 

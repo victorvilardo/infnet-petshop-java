@@ -17,7 +17,6 @@ public class CachorroController {
     public Collection<Cachorro> obterLista(){
         return cachorroService.obterLista();
     }
-
     @GetMapping(value =  "/cachorro/{id}")
     public Cachorro obterPorId(@PathVariable Integer id) {
         return cachorroService.obterPorId(id);
@@ -31,5 +30,10 @@ public class CachorroController {
     @DeleteMapping(value = "/cachorro/{id}/excluir")
     public void excluir(@PathVariable Integer id) {
         cachorroService.excluir(id);
+    }
+
+    @GetMapping(value = "/cachorro/lista/{raca}")
+    public Collection<Cachorro> obterListaPorPorte(@PathVariable String porte){
+        return cachorroService.obterListaPorPorte(porte);
     }
 }
