@@ -1,9 +1,6 @@
 package infnet.petshop.com.controllers;
 
-import infnet.petshop.com.service.AnimalService;
-import infnet.petshop.com.service.CachorroService;
-import infnet.petshop.com.service.GatoService;
-import infnet.petshop.com.service.VendedorService;
+import infnet.petshop.com.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +17,13 @@ public class AppController {
     @Autowired
     private CachorroService cachorroService;
 
+    @Autowired
+    private EnderecoService enderecoService;
+    @Autowired
+    private EstadoService estadoService;
+    @Autowired
+    private ApiService apiService;
+
     @GetMapping(value = "/")
     public String telaHome(Model model){
 
@@ -27,9 +31,38 @@ public class AppController {
         model.addAttribute("qtdeAnimal", animalService.obterQtde());
         model.addAttribute("qtdeGato", gatoService.obterQtde());
         model.addAttribute("qtdeCachorro", cachorroService.obterQtde());
+        model.addAttribute("qtdeEndereco", enderecoService.obterQtde());
 
         return "home";
     }
+
+    @GetMapping(value = "/estado/listagem")
+    public String listaEstados(Model model){
+
+        model.addAttribute("titulo", "Listagem de Estados");
+        model.addAttribute("listagem", estadoService.obterLista());
+
+        return telaHome(model);
+    }
+
+    @GetMapping(value = "/api/listagem")
+    public String listagem(Model model){
+
+        model.addAttribute("titulo", "Listagem da API");
+        model.addAttribute("listagem", apiService.obterLista());
+
+        return telaHome(model);
+    }
+
+    @GetMapping(value = "/endereco/listagem")
+    public String listaEnderecos(Model model){
+
+        model.addAttribute("titulo", "Listagem de Endereços");
+        model.addAttribute("listagem", enderecoService.obterLista());
+
+        return telaHome(model);
+    }
+
 
     @GetMapping(value = "/vendedor/listagem")
     public String listaVendedores(Model model){

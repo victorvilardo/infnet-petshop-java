@@ -40,6 +40,10 @@ public class Vendedor {
     @JsonManagedReference
     private List<Animal> vendas;
 
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "idEndereco")
+    private Endereco endereco;
+
     public Vendedor() {
         this.vendas = new ArrayList<Animal>();
     }
@@ -50,14 +54,17 @@ public class Vendedor {
     }
     @Override
     public String toString() {
-        return String.format("%d - %s - %s - %s - %d",
+        return String.format("%d - %s - %s - %s - %d  - Endereço: %s",
                 id,
                 nome,
                 cpf,
                 matricula,
-                vendas.size()
+                vendas.size(),
+                endereco
 
         );
     }
+
+
 
 }

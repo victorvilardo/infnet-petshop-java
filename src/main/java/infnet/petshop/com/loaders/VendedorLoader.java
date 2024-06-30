@@ -7,7 +7,9 @@ import java.util.Arrays;
 import infnet.petshop.com.model.Cachorro;
 import infnet.petshop.com.model.Gato;
 import infnet.petshop.com.model.Vendedor;
+import infnet.petshop.com.model.Endereco;
 import infnet.petshop.com.service.CachorroService;
+import infnet.petshop.com.service.EnderecoService;
 import infnet.petshop.com.service.GatoService;
 import infnet.petshop.com.service.VendedorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,9 @@ public class VendedorLoader implements ApplicationRunner {
     private CachorroService cachorroService;
     @Autowired
     private GatoService gatoService;
+
+    @Autowired
+    private EnderecoService enderecoService;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -47,10 +52,14 @@ public class VendedorLoader implements ApplicationRunner {
             switch (campos[0].toUpperCase()) {
 
                 case "V":
+
+                    Endereco endereco = enderecoService.obterPorCep(campos[4]);
+
                     vendedor = new Vendedor();
                     vendedor.setNome(campos[1]);
                     vendedor.setCpf(campos[2]);
                     vendedor.setMatricula(campos[3]);
+                    vendedor.setEndereco(endereco);
 
                     vendedorService.incluir(vendedor);
                     break;
