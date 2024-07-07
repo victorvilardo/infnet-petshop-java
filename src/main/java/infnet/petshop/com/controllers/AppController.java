@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 public class AppController {
 
@@ -19,8 +20,7 @@ public class AppController {
 
     @Autowired
     private EnderecoService enderecoService;
-    @Autowired
-    private EstadoService estadoService;
+
     @Autowired
     private ApiService apiService;
 
@@ -32,6 +32,7 @@ public class AppController {
         model.addAttribute("qtdeGato", gatoService.obterQtde());
         model.addAttribute("qtdeCachorro", cachorroService.obterQtde());
         model.addAttribute("qtdeEndereco", enderecoService.obterQtde());
+        model.addAttribute("estados", apiService.obterEstados());
 
         return "home";
     }
@@ -40,7 +41,7 @@ public class AppController {
     public String listaEstados(Model model){
 
         model.addAttribute("titulo", "Listagem de Estados");
-        model.addAttribute("listagem", estadoService.obterLista());
+        model.addAttribute("listagem", apiService.obterEstados());
 
         return telaHome(model);
     }
@@ -63,6 +64,15 @@ public class AppController {
         return telaHome(model);
     }
 
+
+    @GetMapping(value = "/municipio/listagem")
+    public String listaMunicipios(Model model, @RequestParam Integer uf){
+
+        model.addAttribute("titulo", "Listagem de Municipios");
+        model.addAttribute("listagem", apiService.obterMunicipios(uf));
+
+        return telaHome(model);
+    }
 
     @GetMapping(value = "/vendedor/listagem")
     public String listaVendedores(Model model){

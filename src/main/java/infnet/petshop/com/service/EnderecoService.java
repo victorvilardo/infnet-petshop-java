@@ -13,9 +13,6 @@ public class EnderecoService {
 
     @Autowired
     private EnderecoRepository enderecoRepository;
-    @Autowired
-    private ApiVilardoClient apiVilardoClient;
-
 
     public Collection<Endereco> obterLista() {
         return (Collection<Endereco>) enderecoRepository.findAll();
@@ -25,7 +22,5 @@ public class EnderecoService {
         return enderecoRepository.count();
     }
 
-    public Endereco obterPorCep(String cep) {
-        return apiVilardoClient.obterEnderecoPorCep(cep);
-    }
+
 }

@@ -8,10 +8,7 @@ import infnet.petshop.com.model.Cachorro;
 import infnet.petshop.com.model.Gato;
 import infnet.petshop.com.model.Vendedor;
 import infnet.petshop.com.model.Endereco;
-import infnet.petshop.com.service.CachorroService;
-import infnet.petshop.com.service.EnderecoService;
-import infnet.petshop.com.service.GatoService;
-import infnet.petshop.com.service.VendedorService;
+import infnet.petshop.com.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -29,6 +26,8 @@ public class VendedorLoader implements ApplicationRunner {
     @Autowired
     private GatoService gatoService;
 
+    @Autowired
+    private ApiService apiService;
     @Autowired
     private EnderecoService enderecoService;
 
@@ -53,7 +52,7 @@ public class VendedorLoader implements ApplicationRunner {
 
                 case "V":
 
-                    Endereco endereco = enderecoService.obterPorCep(campos[4]);
+                    Endereco endereco = apiService.obterPorCep(campos[4]);
 
                     vendedor = new Vendedor();
                     vendedor.setNome(campos[1]);

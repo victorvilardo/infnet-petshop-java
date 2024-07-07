@@ -25,6 +25,6 @@ public class Estado {
 
     @Override
     public String toString() {
-        return String.format("%s [%s]", nome, sigla);
+        return String.format("%d - %s [%s]", id, nome, sigla);
     }
 }
