@@ -16,28 +16,39 @@
 			<ul class="navbar-nav">
 				<li class="nav-item"><a class="nav-link active" href="/">AppVenda</a></li>
 				<li class="nav-item"><a class="nav-link" href="/vendedor/listagem">Vendedores</a></li>
-				<li class="nav-item"><a class="nav-link" href="/produto/listagem">Produtos</a></li>
-				<li class="nav-item"><a class="nav-link" href="/alimenticio/listagem">Aliment�cios</a></li>
-				<li class="nav-item"><a class="nav-link" href="/eletronico/listagem">Eletr�nicos</a></li>
-				<li class="nav-item"><a class="nav-link" href="/endereco/listagem">Endere�os</a></li>
-
+				<li class="nav-item"><a class="nav-link" href="/animal/listagem">Animais</a></li>
+				<li class="nav-item"><a class="nav-link" href="/gato/listagem">Gato</a></li>
+				<li class="nav-item"><a class="nav-link" href="/cachorro/listagem">Cachorro</a></li>
+				<li class="nav-item"><a class="nav-link" href="/endereco/listagem">Endereços</a></li>
 				<li class="nav-item"><a class="nav-link" href="/estado/listagem">Estados</a></li>
-				<li class="nav-item"><a class="nav-link" href="/api/listagem">API</a></li>
 			</ul>
+
+			<form class="d-flex" action="/municipio/listagem" method="get">
+
+				<select class="form-control me-2" name="uf">
+
+				  <c:forEach var="estado" items="${estados}">
+				  	<option value="${estado.id}">${estado.nome} - ${estado.sigla}</option>
+				  </c:forEach>
+				</select>
+
+				<button class="btn btn-primary" type="submit">Municípios</button>
+			</form>
+
 		</div>
 	</nav>
 
 	<div class="container mt-3">
 
 		<span class="badge rounded-pill bg-primary">Vendedor:${qtdeVendedor}</span>
-		<span class="badge rounded-pill bg-secondary">Produto:${qtdeProduto}</span>
-		<span class="badge rounded-pill bg-success">Aliment�cio:${qtdeAlimenticio}</span>
-		<span class="badge rounded-pill bg-danger">Eletr�nico:${qtdeEletronico}</span>
-		<span class="badge rounded-pill bg-warning">Endere�o:${qtdeEndereco}</span>
+		<span class="badge rounded-pill bg-secondary">Animal:${qtdeAnimal}</span>
+		<span class="badge rounded-pill bg-success">Gato:${qtdeGato}</span>
+		<span class="badge rounded-pill bg-danger">Cachorro:${qtdeCachorro}</span>
+		<span class="badge rounded-pill bg-warning">Endereço:${qtdeEndereco}</span>
 
 		<c:if test="${not empty listagem}">
-			<h2>AppVenda</h2>
-			<p>Gest�o de vendas de produtos:</p>
+			<h2>AppPetshop</h2>
+			<p>Gestão de vendas de Animais:</p>
 			<table class="table">
 				<thead class="table-dark">
 					<tr>
@@ -54,20 +65,6 @@
 			</table>
 		</c:if>
 
-		<c:if test="${empty listagem}">
-			<div class="container mt-5">
-		        <div class="card mx-auto" style="width: 18rem;">
-		            <img src="https://www.learntek.org/blog/wp-content/uploads/2018/05/java2.jpg" class="card-img-top" alt="Foto do Desenvolvedor">
-		            <div class="card-body">
-		                <h5 class="card-title">Elberth LC Moraes</h5>
-		                <p class="card-text"><strong>Telefone:</strong> (21) 99601-6255</p>
-		                <p class="card-text">Atuo como professor universit�rio desde o dia primeiro de abril de dois mil e onze. Neste dia descobri mais uma verdade na minha vida: observar como as pessoas aprendem e ensinam.</p>
-		                <a href="https://github.com/Banco-de-Dados-e-Persistencia-em-Java" class="btn btn-primary">GitHub do Projeto</a>
-		                <a href="https://www.linkedin.com/in/elberth/" class="btn btn-secondary">LinkedIn</a>
-		            </div>
-		        </div>
-		    </div>
-	    </c:if>
 
 	</div>
     <!-- Bootstrap JS and dependencies -->
