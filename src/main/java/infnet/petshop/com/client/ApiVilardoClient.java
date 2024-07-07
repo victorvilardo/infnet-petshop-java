@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Collection;
 
-@FeignClient(url = "http://localhost:8081", name = "apiElberth")
+@FeignClient(url = "http://localhost:8081", name = "apiVilardo")
 public interface ApiVilardoClient {
 
 

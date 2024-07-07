@@ -46,15 +46,6 @@ public class AppController {
         return telaHome(model);
     }
 
-    @GetMapping(value = "/api/listagem")
-    public String listagem(Model model){
-
-        model.addAttribute("titulo", "Listagem da API");
-        model.addAttribute("listagem", apiService.obterLista());
-
-        return telaHome(model);
-    }
-
     @GetMapping(value = "/endereco/listagem")
     public String listaEnderecos(Model model){
 
