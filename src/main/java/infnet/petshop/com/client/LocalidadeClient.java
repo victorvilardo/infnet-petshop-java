@@ -11,4 +11,5 @@ public interface LocalidadeClient {
 
     @GetMapping(value = "/estados?orderBy=nome")
     Collection<Estado> obterEstados();
+
 }
